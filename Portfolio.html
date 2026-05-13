@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>London Nails | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@300;400;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* --- 1. Basic Reset --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f4f2ee;
+      font-family: "Inter", sans-serif;
+      color: #111;
+      overflow-x: hidden;
+      animation: fadeInPage 1.2s ease-in-out forwards;
+    }
+
+    @keyframes fadeInPage {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Mobile Menu Overlay */
+    #mobile-menu-overlay {
+      clip-path: circle(0% at 100% 0%);
+      transition: clip-path 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+      background-color: white;
+    }
+
+    #mobile-menu-overlay.active {
+      clip-path: circle(150% at 100% 0%);
+    }
+
+    /* --- 3. Hero Section (Portfolio Title) --- */
+    .hero {
+      text-align: center;
+      padding: 120px 0 20px 0;
+      /* Top padding badha di hai */
+    }
+
+    .portfolio-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(4rem, 15vw, 15rem);
+      font-weight: 900;
+      line-height: 0.8;
+      letter-spacing: -0.1em;
+      text-transform: uppercase;
+    }
+
+    /* --- 4. Gallery Grid (Yahan images ko niche kiya gaya hai) --- */
+    .gallery-section {
+      padding: 80px 40px 100px 40px;
+      /* Padding-top 80px kar di hai images ko niche karne ke liye */
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 380px);
+      /* Height thodi badhai hai */
+      gap: 25px;
+      /* Spacing badhai hai images ke beech */
+    }
+
+    .grid-item {
+      overflow: hidden;
+      background: #e0e0e0;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .grid-item:hover img {
+      transform: scale(1.05);
+      /* Hover effect */
+    }
+
+    .tall {
+      grid-row: span 2;
+    }
+
+    /* --- 5. Footer (Red Section) --- */
+    footer {
+      background-color: #8b0000;
+      color: #fff;
+      padding: 100px 40px 30px 40px;
+      position: relative;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .footer-col h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .footer-col p {
+      font-size: 13px;
+      line-height: 1.7;
+      opacity: 0.8;
+      max-width: 280px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      opacity: 0.7;
+      transition: 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      opacity: 1;
+      padding-left: 5px;
+    }
+
+    .social-section {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 50px;
+    }
+
+    .social-section span {
+      font-size: 11px;
+      letter-spacing: 3px;
+      display: block;
+      margin-bottom: 25px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 11px;
+      transition: 0.4s;
+    }
+
+    .social-icons a:hover {
+      background: #fff;
+      color: #8b0000;
+      border-color: #fff;
+    }
+
+    .huge-text-bg {
+      text-align: center;
+      margin-top: 60px;
+      pointer-events: none;
+    }
+
+    .huge-text-bg h2 {
+      font-family: "Inter", sans-serif;
+      font-weight: 900;
+      font-size: 18vw;
+      line-height: 0.75;
+      color: rgba(0, 0, 0, 0.12);
+      text-transform: uppercase;
+      letter-spacing: -8px;
+    }
+
+    .copyright {
+      text-align: center;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 40px;
+      opacity: 0.4;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: 80px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 15px;
+      }
+
+      .gallery-section {
+        padding: 40px 20px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .tall {
+        grid-row: auto;
+      }
+    }
+
+    /* ===== PREMIUM TEXT ANIMATIONS ===== */
+    .anim-up {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .anim-up.visible { opacity: 1; transform: translateY(0); }
+
+    .anim-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .anim-left.visible { opacity: 1; transform: translateX(0); }
+
+    .anim-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .anim-scale.visible { opacity: 1; transform: scale(1); }
+
+    .anim-title {
+      opacity: 0;
+      transform: translateY(80px);
+      letter-spacing: 0.3em;
+      transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 1.2s ease;
+    }
+    .anim-title.visible { opacity: 1; transform: translateY(0); letter-spacing: -0.1em; }
+
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+    .d5 { transition-delay: 0.5s; }
+  </style>
+</head>
+
+<body class="antialiased">
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center">
+    <div class="absolute top-8 right-8 cursor-pointer" id="close-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="black">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </div>
+    <nav class="w-full max-w-xs flex flex-col items-center gap-6">
+      <a href="index.html#nav" class="text-xl font-black uppercase">HOME</a>
+      <a href="Portfolio.html" class="text-xl font-black uppercase">PORTFOLIO</a>
+      <a href="about.html" class="text-xl font-black uppercase">ABOUT</a>
+      <a href="contact.html" class="text-xl font-black uppercase">CONTACT</a>
+        <a href="https://cal.com/brother-x/london-nails" target="_blank" class="reveal">
+          <button class="border-[1.5px] border-black px-12 py-4 rounded-full text-xs font-black uppercase hover:bg-black hover:text-white transition-all">
+            BOOK NOW
+          </button>
+        </a>
+    </nav>
+  </div>
+
+  <!-- Header -->
+  <header
+    class="fixed top-0 left-0 w-full z-[90] flex justify-between items-center px-6 py-4 bg-[#f4f2ee]/80 backdrop-blur-md">
+    <div class="flex items-center gap-4">
+      <a href="javascript:history.back()" class="hover:opacity-60 transition-opacity">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+      </a>
+      <a href="index.html" class="font-black tracking-tighter uppercase text-sm">
+        LONDON NAILS
+      </a>
+    </div>
+    <div class="cursor-pointer" id="open-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="black">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+      </svg>
+    </div>
+  </header>
+
+  <!-- Portfolio Heading -->
+  <section class="hero">
+    <h1 class="portfolio-title anim-title">PORTFOLIO</h1>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <div class="gallery-grid">
+      <div class="grid-item anim-scale d1"><img src="T1.jfif" alt="Work 1" /></div>
+      <div class="grid-item anim-scale d2"><img src="T2.jfif" alt="Work 2" /></div>
+      <div class="grid-item tall anim-scale d3"><img src="T3.jfif" alt="Work 3" /></div>
+      <div class="grid-item anim-scale d2"><img src="T4.jfif" alt="Work 4" /></div>
+      <div class="grid-item anim-scale d3"><img src="T5.jfif" alt="Work 5" /></div>
+      <div class="grid-item tall anim-scale d4"><img src="T6.jfif" alt="Work 6" /></div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col">
+        <h3 style="
+              font-family: &quot;Playfair Display&quot;;
+              font-size: 22px;
+              text-transform: none;
+              letter-spacing: 0;
+            ">
+          London Nails
+        </h3>
+        <p>
+          Elevating Grooming. Inspiring Style. Unleash Your Confidence at
+          London Nails where we craft exceptional looks that reflect your
+          individuality.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Portfolio.html">Gallery</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#">Nail Art & Styling</a></li>
+          <li><a href="#">Manicure & Pedicure</a></li>
+          <li><a href="#">Grooming & Skincare</a></li>
+          <li><a href="#">Luxury Coloring</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="social-section">
+      <span>FOLLOW US ON</span>
+      <div class="social-icons">
+        <a href="#">FB</a>
+        <a href="#">TW</a>
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">TK</a>
+      </div>
+    </div>
+
+    <div class="huge-text-bg">
+      <h2>LONDON<br />NAILS</h2>
+    </div>
+
+    <div class="copyright">© 2024 LONDON NAILS | BUILT FOR LUXURY</div>
+  </footer>
+
+  <script>
+    // Menu Logic
+    const openMenu = document.getElementById("open-menu");
+    const closeMenu = document.getElementById("close-menu");
+    const overlay = document.getElementById("mobile-menu-overlay");
+    openMenu.onclick = () => overlay.classList.add("active");
+    closeMenu.onclick = () => overlay.classList.remove("active");
+
+    // Premium Text Animation Observer
+    const animObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); animObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.anim-up, .anim-left, .anim-scale, .anim-title').forEach(el => animObserver.observe(el));
+  </script>
+</body>
+
+</html>

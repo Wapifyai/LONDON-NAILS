@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>London Nails - Contact Page</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;700;900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <style>
+    /* CSS Reset & General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .menu-toggle {
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: #000;
+      margin: 5px 0;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 18vw;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -8px;
+      line-height: 0.8;
+      margin: 5% 0 0;
+      color: #000;
+    }
+
+    /* Features Section */
+    .features-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 5%;
+      text-align: center;
+    }
+
+    .intro-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto 100px;
+      line-height: 1.4;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+    }
+
+    .feature-box i {
+      font-size: 40px;
+      color: #4b3621;
+      /* Dark Brown */
+      margin-bottom: 25px;
+    }
+
+    .feature-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .feature-box p {
+      font-size: 14px;
+      color: #777;
+      max-width: 280px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Map Section Update */
+    .map-section {
+      background: #f8f8f8 url('ContactB.png') center/cover;
+      height: 600px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+
+    .location-card {
+      background: #fff;
+      width: 350px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+
+    .location-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 25px;
+    }
+
+    .badge {
+      background: #f0fff4;
+      color: #2ecc71;
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 50px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 15px;
+      border: 1px solid rgba(46, 204, 113, 0.1);
+    }
+
+    .card-body h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .card-body p {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+      color: #444;
+      margin-bottom: 25px;
+      border-top: 1px solid #f5f5f5;
+      padding-top: 15px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #2ecc71;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    .book-btn {
+      background: #8f0000;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .book-btn:hover {
+      background: #000;
+      transform: translateY(-2px);
+    }
+
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-logo h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .footer-logo p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul li a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+    }
+
+    .social-section {
+      text-align: center;
+      margin: 60px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .social-section p {
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      font-size: 11px;
+      width: 35px;
+      height: 35px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      line-height: 33px;
+      border-radius: 50%;
+      margin: 0 5px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #fff;
+      color: #800000;
+    }
+
+    .bg-watermark {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18vw;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.04);
+      white-space: nowrap;
+      z-index: 1;
+      user-select: none;
+    }
+
+    .copyright {
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 100px;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 1px;
+    }
+
+    .book-now-container {
+      margin-top: 60px;
+    }
+
+    .main-book-btn {
+      border: 1.5px solid #000;
+      padding: 18px 50px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .main-book-btn:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h1 {
+        font-size: 15vw;
+        letter-spacing: -2px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 18vw;
+      }
+
+      header {
+        padding: 12px 16px !important;
+      }
+    }
+
+    /* Mobile Menu Overlay */
+    #mobile-menu-overlay {
+      clip-path: circle(0% at 100% 0%);
+      transition: clip-path 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+      background-color: white;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #mobile-menu-overlay.active {
+      clip-path: circle(150% at 100% 0%);
+    }
+
+    /* --- PREMIUM FOOTER STYLES --- */
+    .premium-footer {
+      background-color: #8f0000;
+      color: #fff;
+      padding: 100px 5% 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-brand h2 {
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+      max-width: 300px;
+    }
+
+    .footer-column h4 {
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 15px;
+    }
+
+    .footer-column ul li a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .footer-column ul li a:hover {
+      color: #fff;
+      padding-left: 5px;
+    }
+
+    .social-bar {
+      text-align: center;
+      margin: 60px 0;
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 50px;
+    }
+
+    .social-bar span {
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+      display: block;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      font-size: 11px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      line-height: 38px;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      background: #fff;
+      color: #8f0000;
+    }
+
+    .giant-text {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 15vw;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.04);
+      white-space: nowrap;
+      z-index: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 80px;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: span 1;
+      }
+
+      .giant-text {
+        font-size: 18vw;
+      }
+    }
+
+    /* ===== PREMIUM TEXT ANIMATIONS ===== */
+    .anim-up {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .anim-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .anim-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .anim-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .anim-title {
+      opacity: 0;
+      transform: translateY(70px);
+      transition: opacity 1.1s ease, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .anim-title.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .d1 {
+      transition-delay: 0.15s;
+    }
+
+    .d2 {
+      transition-delay: 0.3s;
+    }
+
+    .d3 {
+      transition-delay: 0.45s;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay">
+    <div class="absolute top-8 right-8 cursor-pointer" id="close-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="black"
+        style="width: 32px; height: 32px;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </div>
+    <nav class="w-full max-w-xs flex flex-col items-center gap-6"
+      style="display: flex; flex-direction: column; align-items: center; gap: 24px;">
+      <a href="index.html"
+        style="text-decoration: none; color: black; font-size: 20px; font-weight: 900; text-transform: uppercase;">HOME</a>
+      <a href="Portfolio.html"
+        style="text-decoration: none; color: black; font-size: 20px; font-weight: 900; text-transform: uppercase;">PORTFOLIO</a>
+      <a href="about.html"
+        style="text-decoration: none; color: black; font-size: 20px; font-weight: 900; text-transform: uppercase;">ABOUT</a>
+      <a href="contact.html"
+        style="text-decoration: none; color: black; font-size: 20px; font-weight: 900; text-transform: uppercase;">CONTACT</a>
+      <div style="margin-top: 40px;">
+        <a href="https://cal.com/brother-x/london-nails" target="_blank" style="text-decoration: none;">
+          <button style="border: 1.5px solid black; padding: 16px 48px; border-radius: 9999px; font-size: 12px; font-weight: 900; text-transform: uppercase; background: transparent; cursor: pointer;">
+            BOOK NOW
+          </button>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <header
+    style="position: fixed; top: 0; left: 0; width: 100%; z-index: 90; display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background-color: rgba(242, 240, 235, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <a href="javascript:history.back()" style="color: black; opacity: 1; transition: opacity 0.3s;"
+        onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          style="width: 24px; height: 24px;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+      </a>
+      <a href="index.html"
+        style="text-decoration: none; color: black; font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; font-size: 14px; font-family: 'Inter', sans-serif;">
+        LONDON NAILS
+      </a>
+    </div>
+    <div class="cursor-pointer" id="open-menu" style="cursor: pointer;">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="black"
+        style="width: 24px; height: 24px;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+      </svg>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1 class="anim-title">Contact</h1>
+  </section>
+
+  <section class="features-container">
+    <p class="intro-text anim-up d1">
+      Step into a world of elegance. Whether it's a quick polish change or a full set of luxury extensions, our experts
+      are here for you.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-box anim-up d1">
+        <i class="fa-regular fa-clock"></i>
+        <h3>Salon Timing</h3>
+        <p>Mon - Sat: 10:00 AM - 08:30 PM<br>Sunday: 11:00 AM - 06:00 PM<br><em>Appointments Recommended</em></p>
+      </div>
+
+      <div class="feature-box anim-up d2">
+        <i class="fa-solid fa-location-dot"></i>
+        <h3>Location</h3>
+        <p>Ground Floor, Luxury Plaza,<br>Mall Road, Ghaziabad,<br>Uttar Pradesh - 201001</p>
+      </div>
+
+      <div class="feature-box anim-up d3">
+        <i class="fa-solid fa-phone-volume"></i>
+        <h3>Get in Touch</h3>
+        <p>Phone: +91 98765 43210<br>Email: hello@londonnails.com<br>Insta: @londonnails_official</p>
+      </div>
+    </div>
+
+    <div class="book-now-container anim-up d1">
+      <a href="https://cal.com/brother-x/london-nails" target="_blank" style="text-decoration: none;">
+        <button class="main-book-btn">
+          BOOK NOW
+        </button>
+      </a>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <div class="location-card anim-scale">
+      <img src="about.png" alt="London Nails Interior">
+      <div class="card-body">
+        <span class="badge">OPEN NOW</span>
+        <h4>Visit Our Flagship Studio</h4>
+        <p><i class="fa-solid fa-location-arrow"></i> 5 min walk from Metro Station</p>
+
+        <div class="card-meta">
+          <span><i class="fa-solid fa-wifi"></i> Complimentary High-Speed Wi-Fi</span>
+          <span><i class="fa-solid fa-mug-hot"></i> Premium Coffee Bar & Lounge</span>
+        </div>
+
+        <div class="card-footer">
+          <div>
+            <span class="status-dot"></span>
+            <span style="font-size: 12px; font-weight: bold;">Valet Parking Available</span>
+          </div>
+          <button class="book-btn">Get Directions</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="premium-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h2>LONDON NAILS</h2>
+        <p>Elevating Grooming. Inspiring Style. Unleash Your Confidence at London Nails where we craft exceptional looks
+          that reflect your individuality.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="Portfolio.html">Gallery</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Nail Art & Styling</a></li>
+          <li><a href="#">Manicure & Pedicure</a></li>
+          <li><a href="#">Grooming & Skincare</a></li>
+          <li><a href="#">Luxury Coloring</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="social-bar">
+      <span>FOLLOW US ON</span>
+      <div class="social-links">
+        <a href="#">FB</a>
+        <a href="#">TW</a>
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">TK</a>
+      </div>
+    </div>
+
+    <div class="giant-text">LONDON NAILS</div>
+
+    <div class="footer-bottom">
+      © 2026 LONDON NAILS | BUILT FOR LUXURY
+    </div>
+  </footer>
+
+  <script>
+    // Menu Logic
+    const openMenu = document.getElementById("open-menu");
+    const closeMenu = document.getElementById("close-menu");
+    const overlay = document.getElementById("mobile-menu-overlay");
+
+    openMenu.onclick = () => {
+      overlay.classList.add("active");
+    };
+    closeMenu.onclick = () => {
+      overlay.classList.remove("active");
+    };
+
+    // Close menu when clicking links
+    document.querySelectorAll("#mobile-menu-overlay a").forEach((link) => {
+      link.onclick = () => {
+        overlay.classList.remove("active");
+      };
+    });
+
+    // Premium Text Animation Observer
+    const animObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); animObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.anim-up, .anim-scale, .anim-title').forEach(el => animObserver.observe(el));
+  </script>
+</body>
+
+</html>

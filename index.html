@@ -1,0 +1,1732 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>London Nails - Premium Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,900;1,900&family=Montserrat:wght@400;700;900&family=Syncopate:wght@700&display=swap"
+    rel="stylesheet" />
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    :root {
+      --bg-color: #f2f0eb;
+      --luxe-red: #8f0000;
+      --dark-bg: #000000;
+      /* Pure Black as requested */
+    }
+
+    body {
+      background-color: var(--bg-color);
+      font-family: "Montserrat", sans-serif;
+      color: #111;
+      overflow-x: hidden;
+      animation: fadeInPage 1.2s ease-in-out forwards;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .font-bodoni {
+      font-family: "Bodoni Moda", serif;
+    }
+
+    .font-wide {
+      font-family: "Syncopate", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+    }
+
+    /* Mobile Menu Overlay */
+    #mobile-menu-overlay {
+      clip-path: circle(0% at 100% 0%);
+      transition: clip-path 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+      background-color: white;
+    }
+
+    #mobile-menu-overlay.active {
+      clip-path: circle(150% at 100% 0%);
+    }
+
+    /* Ticker Animation */
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-scroll {
+      display: flex;
+      width: max-content;
+      animation: scroll 25s linear infinite;
+    }
+
+    /* Reveal Animation */
+    /* --- PREMIUM TEXT ANIMATIONS --- */
+    .anim-up {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .anim-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .anim-scale {
+      opacity: 0;
+      transform: scale(0.88);
+      transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .anim-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .anim-title {
+      opacity: 0;
+      transform: translateY(80px);
+      transition: opacity 1.1s ease, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .anim-title.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* --- NEW: OUR WORKS SECTION (Image Style) --- */
+    .works-section {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 80px 0;
+      overflow: hidden;
+    }
+
+    .works-title {
+      font-size: clamp(2.5rem, 8vw, 7rem);
+      font-weight: 900;
+      line-height: 0.9;
+    }
+
+    .works-swiper {
+      padding: 50px 0 80px 0 !important;
+      overflow: visible !important;
+    }
+
+    .works-slide {
+      width: 280px;
+      height: 420px;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.5s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      .works-slide {
+        width: 320px;
+        height: 480px;
+      }
+    }
+
+    .works-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .works-slide-label {
+      position: absolute;
+      bottom: 25px;
+      left: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .works-slide-category {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    /* Custom Navigation (Circle Buttons) */
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: -20px;
+    }
+
+    .nav-btn {
+      width: 50px;
+      height: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    .nav-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+
+  <body class="antialiased">
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center">
+    <div class="absolute top-8 right-8 cursor-pointer" id="close-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="black">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </div>
+    <nav class="w-full max-w-xs flex flex-col items-center gap-6">
+      <a href="index.html" class="text-xl font-black uppercase">Home</a>
+      <a href="Portfolio.html" class="text-xl font-black uppercase">PORTFOLIO</a>
+      <a href="about.html" class="text-xl font-black uppercase">ABOUT</a>
+      <a href="contact.html" class="text-xl font-black uppercase">CONTACT</a>
+        <a href="https://cal.com/brother-x/london-nails" target="_blank" class="reveal">
+          <button class="border-[1.5px] border-black px-12 py-4 rounded-full text-xs font-black uppercase hover:bg-black hover:text-white transition-all">
+            BOOK NOW
+          </button>
+        </a>
+    </nav>
+  </div>
+
+  <div class="max-w-[1440px] mx-auto relative">
+    <!-- Header -->
+    <header
+      class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[1440px] z-[90] flex justify-between items-center px-6 py-4 bg-[#f2f0eb]/80 backdrop-blur-md">
+      <a href="index.html" class="font-black tracking-tighter uppercase text-sm">
+        LONDON NAILS
+      </a>
+      <div class="cursor-pointer" id="open-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="black">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+        </svg>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="text-center w-full flex flex-col items-center pt-32 mb-0 bg-white">
+      <h1 class="font-bodoni text-6xl md:text-9xl leading-[0.85] uppercase font-black tracking-tighter px-4 anim-title">
+        PREMIUM<br />NAIL ARTISTRY
+      </h1>
+      <p class="anim-up text-sm max-w-lg mx-auto mt-8 mb-8 opacity-70 px-4 d2">
+        Experience the pinnacle of nail care in London. Our expert artists
+        blend pure creativity with technical precision.
+      </p>
+      <a href="https://cal.com/brother-x/london-nails" target="_blank" class="anim-up d3">
+      <button class="bg-black text-white px-10 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform">
+        BOOK NOW
+      </button>
+    </a>
+
+      <div class="w-full flex flex-col items-center">
+        <div class="anim-up w-full max-w-[500px] mb-[-40px] translate-y-20 d4">
+          <img src="nails.png" alt="Hero Nails" class="w-full h-auto drop-shadow-2xl" />
+        </div>
+        <div class="w-full bg-[#8f0000] py-6 overflow-hidden relative z-10">
+          <div class="animate-scroll text-white items-center">
+            <span class="px-10 font-black text-xs uppercase">SIGNATURE GEL NAILS</span>
+            <span class="px-10 font-bodoni italic text-2xl">London Nails</span>
+            <span class="px-10 font-black text-xs uppercase">CERTIFIED MASTER ARTISTS</span>
+            <span class="px-10 font-bodoni italic text-2xl">Signature Collection</span>
+            <span class="px-10 font-black text-xs uppercase">SIGNATURE GEL NAILS</span>
+            <span class="px-10 font-bodoni italic text-2xl">London Nails</span>
+            <span class="px-10 font-black text-xs uppercase">CERTIFIED MASTER ARTISTS</span>
+            <span class="px-10 font-bodoni italic text-2xl">Signature Collection</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+
+
+    <section style="
+    background-color: #8f0000;
+    color: #ffffff;
+    padding: 80px 20px;
+    font-family: 'serif';
+  ">
+      <div style="
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    ">
+        <div style="flex: 1; min-width: 300px">
+          <img src="hero1.jfif" alt="London Nails Exterior"
+            style="width: 100%; border: 1px solid rgba(255, 255, 255, 0.2)" />
+          <p style="
+          text-align: center;
+          font-size: 11px;
+          letter-spacing: 4px;
+          margin-top: 20px;
+          text-transform: uppercase;
+          opacity: 0.7;
+        ">
+            Best Nail Artistry in London
+          </p>
+        </div>
+
+        <div style="flex: 1; min-width: 300px">
+          <h1 class="font-bodoni anim-up" style="font-size: clamp(32px, 8vw, 64px); margin-bottom: 25px; line-height: 1.1; font-weight: normal; text-transform: uppercase;">
+            Excellence <br />in Every Stroke
+          </h1>
+
+          <p style="
+          font-size: 16px;
+          line-height: 1.8;
+          max-width: 420px;
+          margin-bottom: 35px;
+          letter-spacing: 1.5px;
+          opacity: 0.9;
+        ">
+            London Nails reflects a journey from pure creativity to nail
+            artistry, revealing the personal transformations that shape our
+            clients' confidence and style.
+          </p>
+
+          <a href="Portfolio.html" style="
+          color: #ffffff;
+          text-decoration: none;
+          font-size: 13px;
+          font-weight: bold;
+          letter-spacing: 6px;
+          text-transform: uppercase;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+          padding-bottom: 8px;
+          display: inline-block;
+        ">
+            ■ Let's Dive Into The Luxury
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="w-full py-20 bg-white">
+      <div class="text-center mb-16 anim-up px-6">
+        <p class="text-[10px] tracking-[5px] font-bold uppercase opacity-50 mb-3">
+          OUR EXPERTISE
+        </p>
+        <h2 class="font-bodoni text-5xl md:text-6xl font-black uppercase">
+          OUR SERVICES
+        </h2>
+      </div>
+      <div class="swiper services-swiper px-6">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="S1.jfif"
+              class="w-full aspect-[4/5] object-cover rounded-lg" />
+            <h3 class="font-bold uppercase text-sm mt-4">GEL MANICURE</h3>
+          </div>
+          <div class="swiper-slide">
+            <img src="s2.png"
+              class="w-full aspect-[4/5] object-cover rounded-lg" />
+            <h3 class="font-bold uppercase text-sm mt-4">
+              ACRYLIC EXTENSIONS
+            </h3>
+          </div>
+          <div class="swiper-slide">
+            <img src="s3.jfif"
+              class="w-full aspect-[4/5] object-cover rounded-lg" />
+            <h3 class="font-bold uppercase text-sm mt-4">SPA PEDICURE</h3>
+          </div>
+          <div class="swiper-slide">
+            <img src="s4.jfif"
+              class="w-full aspect-[4/5] object-cover rounded-lg" />
+            <h3 class="font-bold uppercase text-sm mt-4">NAIL ART</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE STYLE: OUR WORKS SECTION -->
+    <section class="works-section">
+      <div class="container mx-auto px-6">
+        <!-- Header Area -->
+        <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-6">
+          <div class="max-w-[250px] text-[10px] uppercase tracking-widest opacity-60 leading-relaxed font-bold anim-up">
+            London Nails combination of statement and simplistic style helps
+            create a look that's as unique as you are.
+          </div>
+          <h2 class="works-title font-wide anim-title">OUR WORKS</h2>
+        </div>
+
+        <!-- Fan Slider -->
+        <div class="swiper works-swiper">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide works-slide">
+              <div class="works-slide-category">Gel</div>
+              <img src="red nails.jfif" alt="Work 1" />
+              <div class="works-slide-label">THE ROSELINE SET</div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide works-slide">
+              <div class="works-slide-category">Art</div>
+              <img src="marbel nail edition.jfif" alt="Work 2" />
+              <div class="works-slide-label">MARBLE ART EDITION</div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide works-slide">
+              <div class="works-slide-category">Trends</div>
+              <img src="french.jfif" alt="Work 3" />
+              <div class="works-slide-label">CHROME FRENCH</div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide works-slide">
+              <div class="works-slide-category">Luxe</div>
+              <img src="matta.jfif" alt="Work 4" />
+              <div class="works-slide-label">MATTE LUXE SET</div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="swiper-slide works-slide">
+              <div class="works-slide-category">Custom</div>
+              <img src="Hibiscus.jfif" alt="Work 5" />
+              <div class="works-slide-label">THE HIBISCUS SET</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom Navigation Buttons -->
+        <div class="nav-container">
+          <div class="nav-btn prev-work">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </div>
+          <div class="nav-btn next-work">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      style="background-color: #fffdfd; padding: 80px 20px 0 20px; position: relative; text-align: center; overflow: hidden; font-family: 'serif';">
+
+      <div style="position: relative; z-index: 3; margin-bottom: 20px; transform: translateY(-80%);">
+        <p class="anim-up"
+          style="font-weight: bold; font-size: clamp(24px, 5vw, 38px); color: #805a3b; letter-spacing: 2px; margin: 0; text-transform: uppercase;">
+          Team
+        </p>
+      </div>
+
+      <div style="position: relative; z-index: 1; margin-bottom: -5vw;">
+        <h2 class="anim-title"
+          style="font-size: clamp(32px, 9vw, 135px); font-weight: 900; margin: 0; line-height: 0.85; color: #4b3621; text-transform: uppercase; letter-spacing: clamp(1px, 0.8vw, 8px); text-shadow: 4px 6px 15px rgba(0,0,0,0.2);">
+          ELITE TALENT<br>NAIL ARTISTRY
+        </h2>
+      </div>
+
+      <div
+        style="position: relative; z-index: 2; max-width: 950px; margin: 0 auto; transform: translateY(-25%); margin-bottom: -20%;">
+        <img src="team1.1.png" alt="London Nails Team" class="anim-scale"
+          style="width: 100%; height: auto; display: block; filter: drop-shadow(0px 10px 25px rgba(0,0,0,0.1));">
+      </div>
+    </section>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&family=Playfair+Display&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&family=Playfair+Display&family=Bodoni+Moda&display=swap"
+      rel="stylesheet">
+
+    <style>
+      .expertise-section {
+        background-color: #fff;
+        padding: 90px 0 60px 0;
+        color: #1a1a1a;
+      }
+
+      .expertise-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .intro-section {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 80px;
+      }
+
+      .script-font {
+        font-family: 'Great Vibes', cursive;
+        font-size: 4rem;
+        color: #805a3b;
+        margin-bottom: 0;
+        line-height: 1;
+      }
+
+      .intro-text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #666;
+        letter-spacing: 0.5px;
+        margin-top: -10px;
+      }
+
+      .expertise-header {
+        background-color: #f8f5f2;
+        padding: 60px 0;
+        text-align: center;
+        margin-bottom: 80px;
+        position: relative;
+      }
+
+      .expertise-header::before,
+      .expertise-header::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 40px;
+        background-color: #d1c8bd;
+      }
+
+      .expertise-header::before {
+        top: 0;
+      }
+
+      .expertise-header::after {
+        bottom: 0;
+      }
+
+      .main-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 8vw, 4.5rem);
+        letter-spacing: 12px;
+        color: #d1c8bd;
+        font-weight: 400;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      .service-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 100px;
+        gap: 0;
+        align-items: stretch;
+        border: 1px solid #f0ece8;
+      }
+
+      .service-row.reverse {
+        direction: rtl;
+      }
+
+      .service-row.reverse>* {
+        direction: ltr;
+      }
+
+      .service-content {
+        padding: 80px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .coloring-bg {
+        background-color: #fdfaf7;
+      }
+
+      .service-image {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      .service-row:hover .service-image img {
+        transform: scale(1.05);
+      }
+
+      .service-title {
+        font-family: 'Great Vibes', cursive;
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+        color: #805a3b;
+        margin-bottom: 40px;
+      }
+
+      .price-group {
+        margin-bottom: 40px;
+      }
+
+      .price-group h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 25px;
+        letter-spacing: 3px;
+        color: #1a1a1a;
+        position: relative;
+        display: inline-block;
+      }
+
+      .price-group h3::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 20px;
+        height: 1px;
+        background: #805a3b;
+      }
+
+      .price-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 15px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        color: #444;
+        transition: color 0.3s ease;
+      }
+
+      .price-item:hover {
+        color: #805a3b;
+      }
+
+      .price-item span:first-child {
+        font-weight: 500;
+      }
+
+      .price-dots {
+        flex-grow: 1;
+        border-bottom: 1px dotted #d1c8bd;
+        margin: 0 15px;
+        opacity: 0.5;
+      }
+
+      .price-value {
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+
+      @media (max-width: 992px) {
+        .service-row {
+          grid-template-columns: 1fr;
+        }
+
+        .service-row.reverse {
+          direction: ltr;
+        }
+
+        .service-content {
+          padding: 60px 40px;
+          order: 2;
+        }
+
+        .service-image {
+          height: 400px;
+          order: 1;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .main-title {
+          letter-spacing: 5px;
+        }
+
+        .script-font {
+          font-size: 3rem;
+        }
+
+        .service-content {
+          padding: 40px 20px;
+        }
+      }
+    </style>
+
+    <section class="expertise-section">
+      <div class="expertise-container">
+        <div class="intro-section">
+          <h2 class="script-font">Nail Salon in the City</h2>
+          <p class="intro-text">Award-winning nail studio in the heart of the city. We provide premium nail care, luxury
+            manicures, and custom nail artistry tailored to your unique style. Relax and indulge in the ultimate
+            pampering experience.</p>
+        </div>
+
+        <div class="expertise-header">
+          <h1 class="main-title">OUR EXPERTISE</h1>
+        </div>
+
+        <div class="service-row">
+          <div class="service-content">
+            <h2 class="service-title">Nail Styling</h2>
+
+            <div class="price-group">
+              <h3>Gel Extensions</h3>
+              <div class="price-item"><span>Basic Overlay</span><span class="price-dots"></span><span
+                  class="price-value">$ 60.00</span></div>
+              <div class="price-item"><span>French Tips</span><span class="price-dots"></span><span
+                  class="price-value">$ 65.00</span></div>
+              <div class="price-item"><span>Custom 3D Art</span><span class="price-dots"></span><span
+                  class="price-value">$ 75.00</span></div>
+            </div>
+
+            <div class="price-group">
+              <h3>Acrylic Nails</h3>
+              <div class="price-item"><span>Full Set</span><span class="price-dots"></span><span class="price-value">$
+                  40.00</span></div>
+              <div class="price-item"><span>Refill</span><span class="price-dots"></span><span class="price-value">$
+                  45.00</span></div>
+              <div class="price-item"><span>Removal</span><span class="price-dots"></span><span class="price-value">$
+                  50.00</span></div>
+            </div>
+          </div>
+          <div class="service-image">
+            <img src="nailprice1.png" alt="Nail Styling">
+          </div>
+        </div>
+
+        <div class="service-row reverse">
+          <div class="service-content coloring-bg">
+            <h2 class="service-title">Luxury Care</h2>
+
+            <div class="price-group">
+              <div class="price-item"><span>Classic Manicure</span><span class="price-dots"></span><span
+                  class="price-value">$ 50.00</span></div>
+              <div class="price-item"><span>Spa Pedicure</span><span class="price-dots"></span><span
+                  class="price-value">$ 70.00+</span></div>
+              <div class="price-item"><span>Paraffin Treatment</span><span class="price-dots"></span><span
+                  class="price-value">$ 30.00+</span></div>
+            </div>
+
+            <div class="price-group">
+              <div class="price-item"><span>Gel Polish Change</span><span class="price-dots"></span><span
+                  class="price-value">$ 25.00+</span></div>
+              <div class="price-item"><span>Nail Strengthening</span><span class="price-dots"></span><span
+                  class="price-value">$ 40.00+</span></div>
+              <div class="price-item"><span>Chrome / Ombre</span><span class="price-dots"></span><span
+                  class="price-value">$ 15.00+</span></div>
+              <div class="price-item"><span>Foot Massage</span><span class="price-dots"></span><span
+                  class="price-value">$ 20.00+</span></div>
+            </div>
+          </div>
+          <div class="service-image">
+            <img src="nailprice2.jfif" alt="Nail Care Services">
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonial section -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --card-width: 320px;
+        --card-margin: 20px;
+        --total-cards: 6;
+        /* Aapke original cards ki ginti */
+      }
+
+      .testimonial-section {
+        padding: 60px 0 80px 0;
+        text-align: center;
+        background-color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        overflow-x: hidden;
+      }
+
+      .testimonial-header h1 {
+        font-family: 'Bodoni Moda', serif;
+        font-size: 3.5rem;
+        font-weight: 900;
+        margin-bottom: 15px;
+        letter-spacing: -1px;
+        text-transform: uppercase;
+      }
+
+      .testimonial-header p {
+        color: #666;
+        margin-bottom: 50px;
+      }
+
+      /* Slider logic */
+      .slider {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .slide-track {
+        display: flex;
+        /* Width calculation for seamless loop */
+        width: calc((var(--card-width) + (var(--card-margin) * 2)) * (var(--total-cards) * 2));
+        animation: scroll 40s linear infinite;
+      }
+
+      /* Hover karne par slider ruk jayega */
+      .slide-track:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(calc(-1 * (var(--card-width) + (var(--card-margin) * 2)) * var(--total-cards)));
+        }
+      }
+
+      /* Card Styling */
+      .testimonial-card {
+        width: var(--card-width);
+        height: 480px;
+        margin: 0 var(--card-margin);
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        flex-shrink: 0;
+      }
+
+      .card-img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Image ko stretch hone se bachata hai */
+        display: block;
+      }
+
+      /* The Fading Effect from Image to Text */
+      .card-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 60px 25px 25px;
+        background: linear-gradient(to top,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0.95) 60%,
+            transparent 100%);
+        text-align: left;
+      }
+
+      .quote-icon {
+        font-size: 35px;
+        font-weight: bold;
+        color: #000;
+        display: block;
+        margin-bottom: -10px;
+      }
+
+      .card-content p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #333;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+
+      .author {
+        display: block;
+        text-align: right;
+        font-size: 12px;
+        color: #777;
+        font-weight: 400;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .testimonial-header h1 {
+          font-size: 2rem;
+        }
+
+        /* Variable ko selector ke andar rakho */
+        :root {
+          --card-width: 280px;
+        }
+      }
+    </style>
+
+    <section class="testimonial-section">
+      <div class="testimonial-header">
+        <h1>Real Results, Real Stories</h1>
+        <p>Join hundreds of happy clients who have experienced the magic of our precision nail artistry</p>
+      </div>
+
+      <div class="slider">
+        <div class="slide-track">
+
+          <div class="testimonial-card">
+            <div class="card-img">
+              <img src="T1.jfif" alt="Client 1">
+            </div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>The nail art was beyond my expectations! The detail and precision are unmatched. Highly recommended!
+              </p>
+              <span class="author">— Priya, Regular Client</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="card-img">
+              <img src="T2.jfif" alt="Client 2">
+            </div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>Perfect bridal manicure. They took so much care and the gel lasted for more than 3 weeks!</p>
+              <span class="author">— Ananya, Bridal Package</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="card-img">
+              <img src="T3.jfif" alt="Client 3">
+            </div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>Cleanest salon I've ever visited. The staff is professional and the vibe is so relaxing.</p>
+              <span class="author">— Sneha, Weekly Visitor</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="card-img">
+              <img src="T4.jfif" alt="Client 4">
+            </div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>Finally found a place that knows how to do perfect extensions. My nails look so natural!</p>
+              <span class="author">— Riya, New Client</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="card-img">
+              <img src="T5.jfif" alt="Client 5">
+            </div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>Love their range of colors. Every time I visit, I get something unique and trendy.</p>
+              <span class="author">— Meera, Fashion Designer</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="card-img">
+              <img src="T6.jfif" alt="Client 6">
+            </div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>Amazing experience. The spa pedicure was so soothing. My feet feel brand new!</p>
+              <span class="author">— Kavita, Entrepreneur</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="card-img"><img src="T1.jfif" alt="Client 1"></div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>The nail art was beyond my expectations!</p>
+              <span class="author">— Priya, Regular Client</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="card-img"><img src="T2.jfif" alt="Client 2"></div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>Perfect bridal manicure.</p>
+              <span class="author">— Ananya, Bridal Package</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="card-img"><img src="T3.jfif" alt="Client 3"></div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>Cleanest salon I've ever visited.</p>
+              <span class="author">— Sneha, Weekly Visitor</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="card-img"><img src="T4.jfif" alt="Client 4"></div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>Finally found a place for extensions.</p>
+              <span class="author">— Riya, New Client</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="card-img"><img src="T5.jfif" alt="Client 5"></div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>Love their range of colors.</p>
+              <span class="author">— Meera, Fashion Designer</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="card-img"><img src="T6.jfif" alt="Client 6"></div>
+            <div class="card-content">
+              <span class="quote-icon">“</span>
+              <p>Amazing experience.</p>
+              <span class="author">— Kavita, Entrepreneur</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <style>
+      /* CSS Reset & Basic Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      body {
+        background-color: #ffffff;
+        padding: 50px 0;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+      }
+
+      /* Header Section */
+      .insta-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .insta-header h2 {
+        font-size: 32px;
+        font-weight: 500;
+        color: #1a1a1a;
+      }
+
+      .insta-btn {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        border: 1px solid #ddd;
+        border-radius: 50px;
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .insta-btn:hover {
+        background-color: #f8f8f8;
+        border-color: #000;
+      }
+
+      .insta-btn span {
+        margin-left: 8px;
+        font-size: 18px;
+      }
+
+      /* Instagram Grid Styling */
+      .insta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        position: relative;
+        height: 600px;
+        /* कुल ऊँचाई */
+        overflow: hidden;
+      }
+
+      .grid-item {
+        border-radius: 40px;
+        /* इमेज के कोनों को गोल करने के लिए */
+        overflow: hidden;
+        background-color: #f0f0f0;
+      }
+
+      .grid-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .grid-item:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Masonry-like Heights (अलग-अलग लंबाई की इमेजेस) */
+      .item-1 {
+        grid-row: span 2;
+        height: 450px;
+      }
+
+      .item-2 {
+        grid-row: span 2;
+        height: 500px;
+        margin-top: 50px;
+      }
+
+      .item-3 {
+        grid-row: span 2;
+        height: 400px;
+      }
+
+      .item-4 {
+        grid-row: span 2;
+        height: 550px;
+      }
+
+      /* Bottom Fade Overlay (धुंधला प्रभाव) */
+      .fade-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 250px;
+        /* धुंधले हिस्से की ऊँचाई */
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 90%);
+        pointer-events: none;
+        /* ताकि इमेजेस पर क्लिक हो सके */
+        z-index: 2;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .insta-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+
+        .insta-swiper {
+          padding: 0 15px;
+          overflow: hidden;
+        }
+
+        .grid-item {
+          height: 350px !important;
+          margin-top: 0 !important;
+          border-radius: 30px;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .insta-swiper .swiper-wrapper {
+          display: grid !important;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+          height: 600px;
+          overflow: hidden;
+          transform: none !important;
+        }
+
+        .insta-swiper .swiper-slide {
+          width: auto !important;
+          margin: 0 !important;
+        }
+      }
+    </style>
+    </head>
+
+    <body>
+
+      <div class="container">
+        <!-- Header -->
+        <div class="insta-header">
+          <h2>Follow us on Instagram</h2>
+          <a href="https://instagram.com" target="_blank" class="insta-btn">
+            @blissfull_cosmetics <span>&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Grid Layout -->
+        <!-- Swiper Layout -->
+        <div class="swiper insta-swiper relative">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide grid-item item-1">
+              <img src="i1.jfif" alt="Nail Art 1">
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide grid-item item-2">
+              <img src="i2.jfif" alt="Happy Customer">
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide grid-item item-3">
+              <img src="i3.jfif" alt="Product">
+            </div>
+            <!-- Slide 4 -->
+            <div class="swiper-slide grid-item item-4">
+              <img src="i4.jfif" alt="Nail Polish">
+            </div>
+            <div class="swiper-slide grid-item item-4">
+              <img src="i5.jfif" alt="Nail Polish">
+            </div>
+            <div class="swiper-slide grid-item item-4">
+              <img src="i6.jfif" alt="Nail Polish">
+            </div>
+
+            <!-- Extra items for visual consistency -->
+            <div class="swiper-slide grid-item" style="height: 300px;">
+              <img src="i1.jfif" alt="Nails">
+            </div>
+            <div class="swiper-slide grid-item" style="height: 300px;">
+              <img src="i2.jfif" alt="Skin Care">
+            </div>
+            <div class="swiper-slide grid-item" style="height: 300px;">
+              <img src="i3.jfif" alt="Tools">
+            </div>
+            <div class="swiper-slide grid-item" style="height: 300px;">
+              <img src="i4.jfif" alt="Studio">
+            </div>
+            <div class="swiper-slide grid-item item-4">
+              <img src="i5.jfif" alt="Nail Polish">
+            </div>
+            <div class="swiper-slide grid-item item-4">
+              <img src="i6.jfif" alt="Nail Polish">
+            </div>
+          </div>
+          <!-- Fade Overlay (Desktop Only) -->
+          <div class="fade-overlay hidden md:block"></div>
+        </div>
+      </div>
+      <!--about section-->
+
+
+      <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap"
+        rel="stylesheet">
+
+      <style>
+        /* Section Specific Styles */
+        .about-salon-section {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 80px 20px;
+          text-align: center;
+          background-color: #ffffff;
+          font-family: 'Playfair Display', serif;
+          color: #333;
+          overflow-x: hidden;
+        }
+
+        .about-salon-section .top-subtitle {
+          font-size: 16px;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          margin-bottom: 20px;
+          font-family: 'Montserrat', sans-serif;
+          color: #888;
+        }
+
+        /* Hero Section (Text + Image Overlap) */
+        .about-salon-section .hero-container {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 550px;
+          margin-bottom: 60px;
+        }
+
+        .about-salon-section .bg-text {
+          font-size: clamp(80px, 20vw, 280px);
+          font-weight: 700;
+          letter-spacing: 15px;
+          color: #4b3621;
+          /* Dark Brown */
+          position: absolute;
+          z-index: 1;
+          pointer-events: none;
+          line-height: 1;
+        }
+
+        .about-salon-section .image-wrapper {
+          z-index: 2;
+          width: 380px;
+          height: 480px;
+          overflow: hidden;
+          box-shadow: 20px 20px 0px #f5f1ed;
+          /* Decorative Background box */
+        }
+
+        .about-salon-section .image-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        /* Content Area */
+        .about-salon-section .content-container {
+          max-width: 850px;
+          margin: 0 auto;
+        }
+
+        .about-salon-section .spotlight-text {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 11px;
+          letter-spacing: 5px;
+          text-transform: uppercase;
+          margin-bottom: 25px;
+          color: #999;
+        }
+
+        .about-salon-section .main-quote {
+          font-size: clamp(24px, 5vw, 36px);
+          font-style: italic;
+          font-weight: 400;
+          margin-bottom: 30px;
+          line-height: 1.4;
+          color: #1a1a1a;
+        }
+
+        .about-salon-section .description {
+          font-size: 15px;
+          color: #666;
+          max-width: 700px;
+          margin: 0 auto;
+          line-height: 1.8;
+          letter-spacing: 0.3px;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .about-salon-section {
+            padding: 40px 15px;
+          }
+
+          .about-salon-section .hero-container {
+            height: 300px;
+            margin-bottom: 40px;
+          }
+
+          .about-salon-section .image-wrapper {
+            width: 220px;
+            height: 280px;
+            box-shadow: 10px 10px 0px #f5f1ed;
+          }
+
+          .about-salon-section .bg-text {
+            font-size: 80px;
+            letter-spacing: 5px;
+            color: #4b3621; /* Dark Brown */
+            opacity: 1; /* Solid color as requested */
+          }
+
+          .about-salon-section .main-quote {
+            font-size: 24px;
+            line-height: 1.3;
+          }
+
+          .about-salon-section .description {
+            font-size: 14px;
+            padding: 0 10px;
+          }
+        }
+      </style>
+
+      <section class="about-salon-section">
+        <p class="top-subtitle">The Art of Nails</p>
+
+        <div class="hero-container">
+          <h1 class="bg-text">ABOUT</h1>
+          <div class="image-wrapper">
+            <img src="about.png" alt="Salon Artist Portrait">
+          </div>
+        </div>
+
+        <div class="content-container">
+          <p class="spotlight-text">The Creative Visionary: Ashwani Shastri</p>
+
+          <h2 class="main-quote">
+            "Nail artistry is not just a service; <br> it's the most intimate form of self-expression."
+          </h2>
+
+          <p class="description">
+            Founded with a passion for precision and a dream to redefine luxury care, our salon is a
+            creative sanctuary. Backed by a team of skilled artists and designers, we bring your
+            unique vision to life, one stroke at a time.
+          </p>
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!--footer section -->
+      <style>
+        /* 1. Global Fix: Remove body padding that causes bottom white space */
+        body {
+          margin: 0;
+          padding: 0 !important;
+          background-color: #f2f0eb;
+          /* Match your theme */
+        }
+
+        .premium-footer {
+          --bg-red: #800000; /* Rich Dark Red */
+          --text-white: #ffffff;
+          background-color: var(--bg-red);
+          color: var(--text-white);
+          font-family: 'Montserrat', sans-serif;
+          padding: 80px 6% 40px;
+          position: relative;
+          overflow: hidden;
+          margin-top: -1px;
+          /* Overlap to hide any pixel gaps */
+        }
+
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 1.5fr 1fr 1fr 1fr;
+          gap: 40px;
+          margin-bottom: 60px;
+        }
+
+        .footer-brand h2 {
+          font-family: 'Playfair Display', serif;
+          font-size: 28px;
+          letter-spacing: 2px;
+          margin-bottom: 20px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .footer-brand p {
+          font-size: 13px;
+          line-height: 1.8;
+          opacity: 0.8;
+          max-width: 300px;
+        }
+
+        .footer-column h4 {
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          margin-bottom: 25px;
+          color: var(--text-white);
+        }
+
+        .footer-column ul {
+          list-style: none;
+          padding: 0;
+        }
+
+        .footer-column ul li {
+          margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+          text-decoration: none;
+          color: var(--text-white);
+          font-size: 13px;
+          opacity: 0.8;
+          transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+          opacity: 1;
+          padding-left: 5px;
+          color: var(--accent);
+        }
+
+        .social-bar {
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 25px 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 30px;
+          margin-bottom: 60px;
+        }
+
+        .social-bar span {
+          font-size: 11px;
+          letter-spacing: 3px;
+          font-weight: 600;
+        }
+
+        .social-links {
+          display: flex;
+          gap: 15px;
+        }
+
+        .social-links a {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-white);
+          text-decoration: none;
+          font-size: 12px;
+          transition: 0.3s;
+        }
+
+        .social-links a:hover {
+          background: #ffffff;
+          color: var(--bg-red);
+          transform: translateY(-3px);
+        }
+
+        .giant-text {
+          font-size: 15vw;
+          font-weight: 900;
+          text-align: center;
+          line-height: 0.8;
+          color: rgba(255, 255, 255, 0.1); /* White watermark */
+          user-select: none;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+        }
+
+        .footer-bottom {
+          text-align: center;
+          font-size: 10px;
+          letter-spacing: 2px;
+          opacity: 0.5;
+          text-transform: uppercase;
+        }
+
+        @media (max-width: 900px) {
+          .footer-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .footer-brand {
+            grid-column: span 2;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .footer-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .footer-brand {
+            grid-column: span 1;
+          }
+
+          .giant-text {
+            font-size: 18vw;
+          }
+        }
+      </style>
+
+      <footer id="contact" class="premium-footer">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h2>LONDON NAILS</h2>
+            <p>Elevating Grooming. Inspiring Style. Unleash Your Confidence at London Nails where we craft exceptional
+              looks that reflect your individuality.</p>
+          </div>
+
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="Nail salon.html">Home</a></li>
+              <li><a href="Nail salon.html#services">Services</a></li>
+              <li><a href="Portfolio.html">Gallery</a></li>
+              <li><a href="about.html">About Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#">Nail Art & Styling</a></li>
+              <li><a href="#">Manicure & Pedicure</a></li>
+              <li><a href="#">Grooming & Skincare</a></li>
+              <li><a href="#">Luxury Coloring</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="social-bar">
+          <span>FOLLOW US ON</span>
+          <div class="social-links">
+            <a href="#">FB</a>
+            <a href="#">TW</a>
+            <a href="#">IG</a>
+            <a href="#">YT</a>
+            <a href="#">TK</a>
+          </div>
+        </div>
+
+        <div class="giant-text">LONDON NAILS</div>
+
+        <div class="footer-bottom">
+          © 2026 LONDON NAILS | BUILT FOR LUXURY
+        </div>
+      </footer>
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  // Menu Logic
+  const openMenu = document.getElementById("open-menu");
+  const closeMenu = document.getElementById("close-menu");
+  const overlay = document.getElementById("mobile-menu-overlay");
+
+  openMenu.onclick = () => overlay.classList.add("active");
+  closeMenu.onclick = () => overlay.classList.remove("active");
+
+  // Premium Animation Observer
+  const animObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          animObserver.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+  document
+    .querySelectorAll(".anim-up, .anim-scale, .anim-title")
+    .forEach((el) => animObserver.observe(el));
+
+  // Services Swiper
+  new Swiper(".services-swiper", {
+    slidesPerView: 1.4,
+    spaceBetween: 20,
+    breakpoints: {
+      768: { slidesPerView: 2.5 },
+      1024: { slidesPerView: 4 },
+    },
+  });
+
+  // OUR WORKS - 3D Coverflow Effect (Image Style)
+  new Swiper(".works-swiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    loop: true,
+    coverflowEffect: {
+      rotate: 10, // Subtle tilt like the image
+      stretch: -30, // Cards overlapping
+      depth: 200, // 3D perspective
+      modifier: 1,
+      slideShadows: false,
+    },
+    navigation: {
+      nextEl: ".next-work",
+      prevEl: ".prev-work",
+    },
+  });
+
+  // Instagram Swiper (Mobile Only)
+  new Swiper(".insta-swiper", {
+    slidesPerView: 2,
+    spaceBetween: 15,
+    breakpoints: {
+      769: {
+        enabled: false, // Disable on desktop to use grid
+      }
+    }
+  });
+</script>
+</body>
+
+</html>
